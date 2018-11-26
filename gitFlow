@@ -1,0 +1,15 @@
+# Tells you what's going on in your git repository
+git status
+
+# Add files to the staging area to get ready for a commit
+git add "filename"
+
+# When you're happy with your files and have made all the changes
+# you want commit them to the staging area.
+git commit -m "this message is required"
+
+
+# Finally, push your changes to the repsitory so everyone can see
+# them.
+
+git push 
