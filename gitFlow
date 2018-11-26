@@ -11,5 +11,4 @@ git commit -m "this message is required"
 
 # Finally, push your changes to the repsitory so everyone can see
 # them.
-
 git push 
