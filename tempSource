@@ -1,0 +1,862 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- start of server/head-include-1.html -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:webmasters@gnu.org" />
+<link rel="icon" type="image/png" href="/graphics/gnu-head-mini.png" />
+<meta name="ICBM" content="42.355469,-71.058627" />
+<meta name="DC.title" content="gnu.org" />
+<link rel="stylesheet" type="text/css" href="/reset.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/mini.css" media="handheld" />
+<link rel="stylesheet" type="text/css" href="/layout.min.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/print.min.css" media="print" />
+<!-- end of server/head-include-1.html -->
+
+<!-- end of server/header.html -->
+
+<!-- Parent-Version: 1.79 -->
+<title>Libextractor
+- GNU Project - Free Software Foundation</title>
+<style type="text/css"><!--
+#content img { width: 9em; }
+#content .emph-box { padding: .7em 1.2em; }
+#content dd ul { margin-left: 0; }
+#content dd li { margin-bottom: 1em; }
+--></style>
+<meta name="content-language" content="en" />
+<meta name="language" content="en" />
+<meta name="description" content="a simple library for keyword extraction" />
+<meta name="author" content="Vids Samanta and Christian Grothoff" />
+<meta name="rights" content="(C) 2002--2012 by Vids Samanta and Christian Grothoff" />
+<meta name="keywords" content="keyword, meta data, extraction, mp3, html, images, jpeg, gif, ps, mime, real, qt, asf, mpeg, avi, riff, tiff, summary, summaries, kbps, format, mime-type, zip, elf, doc, ppt, xls, sha-1, md5, open office, sxw, dvi, id3, id3v2, id3v2.3, id3v2.4, thumbnails, exiv2, nsf, sid, flv, flac, pax, cpio, ISO9960, shar, raw, mtree, rar, 7-zip, cab, lha, lzh, xar, ar" />
+<meta name="robots" content="index,follow" />
+<meta name="revisit-after" content="28 days" />
+<meta name="content-language" content="en" />
+<meta name="language" content="en" />
+<meta http-equiv="expires" content="43200" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="SHORTCUT ICON" href="favicon.ico" />
+<!-- begin /server/gnun/initial-translations-list.html -->
+<!-- HTML head: set a flag for further expansion in body-include*.html. -->
+<!-- end /server/gnun/initial-translations-list.html -->
+
+<!-- start of server/banner.html -->
+<!-- start of head-include-2.html -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style type="text/css" media="screen">
+<!-- 
+#translations
+{
+  border-bottom: .2em solid #001345;
+}
+#gnu-banner
+{
+  float: none;
+  padding-bottom: 0;
+}
+div#gnu-banner a, div#gnu-banner a strong
+{
+  color: white;
+}
+div#gnu-banner a strong, div#fundraiser p.message
+{
+  text-shadow: 0 1px 1px rgba(0,0,0,0.95),
+               0 1px 3px rgba(0,0,0,0.65),
+               0 2px 4px rgba(0,0,0,0.2);
+}
+div#header
+{
+  direction: ltr;
+  background-color: #243386;
+  position           : relative;
+  background-position: center;
+  background-size    : cover;
+  background-repeat  : none;
+  overflow           : hidden;
+}
+div#fundraiser p.message
+{
+  font-size: 1.1em;
+  text-align: center;
+  padding: .2em 0 .4em;
+  color: white;
+}
+div#header p.contribute
+{
+  line-height: 1.5em;
+  font-size: 1.2em;
+  text-align: center;
+  padding-bottom: .75em;
+  margin: 0;
+}
+#header a.join
+{
+  display: inline-block;
+  width: 4em;
+  text-align: center;
+  padding: 0 .5em;
+  margin: .3em .5em;
+  font-weight: bold;
+  color: black;
+  background-color: #f88d19;
+  border: 1px solid white;
+  border-radius: 1em;
+  -moz-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -opera-border-radius: 1em;
+}
+#header b, #header b a[href]
+{
+  color: yellow;
+}
+div#fundraiser .progress
+{
+  width: 100%;
+  height: 1.1em;
+  line-height: 1.1em;
+  text-align: right;
+  background: #f9f2d5;
+  color: black;
+  font-weight: bold;
+  border: 1px solid white;
+  margin-bottom: 1em;
+}
+div#fundraiser .progress-bar
+{
+  line-height: 1.1em;
+  min-width: 2em;
+  background: #f88d19;
+  color: black;
+  text-align: right;
+} -->
+</style>
+<style type="text/css" media="screen">div#fundraiser .progress-bar
+{
+  width: 22%;
+}
+
+<!--
+div#fundraiser .goal-div
+{
+  position: relative;
+  bottom: 1.1em;
+  margin-right: .1em;
+}
+div#fundraiser .percentage, div#fundraiser .goal
+{
+  margin-right: .1em;
+}
+
+@media (max-width: 21em)
+{
+  div#fundraiser p.message { font-size: 0.8em; }
+}
+
+@media (min-width: 30em)
+{
+  #header {
+    background-image: url("/server/staging/fundraiser/1-departure-md-banner.jpg");
+  }
+  #fundraiser
+  {
+    float: left;
+    width: 70%;
+  }
+  div#fundraiser p.message, #gnu-banner
+  {
+    text-align: left;
+  }
+  div#header p.contribute
+  {
+    float: right;
+    text-align: right;
+    width: 30%;
+    margin-top: 4.5em;
+  }
+}
+
+@media (min-width: 60em)
+{
+  #fundraiser
+  {
+    width: 62%;
+  }
+  div#header p.contribute
+  {
+    text-align: center;
+  }
+}
+-->
+</style>
+<!-- end of head-include-2.html -->
+
+</head>
+<body>
+<div class="inner">
+<!-- start of server/body-include-1.html -->
+
+
+
+
+
+<div id="toplinks">
+ <a href="#content">Skip to main text</a>
+ <span class="gnun-split"></span>
+ <a href="/server/select-language.html?callback=/software/libextractor/" rel="nofollow">
+ Set language
+ <span class="gnun-split"></span>
+ </a>
+</div> <!-- /toplinks -->
+
+<div id="searcher">
+ <form method="get" action="//www.gnu.org/cgi-bin/estseek.cgi" class="header">
+  <div>
+  <input name="phrase" id="phrase" type="text" size="18" accesskey="s"
+         value="Why GNU/Linux?" onfocus="this.value=''" />
+  <input type="submit" value="Search" />
+  </div>
+ </form>
+</div><!-- /searcher -->
+
+<!-- if initial translation list isn't included before banner.html,
+     then the file may use an old boilerplate that contains
+     div#translations in its body, and we mustn't duplicate it here. -->
+<!-- begin /server/gnun/initial-translations-list.html -->
+<!-- HTML body: expand when this file is previously included in HTML head
+                    unless already expanded.  -->
+<div id="translations">
+<p>
+<span dir="ltr" class="original"><a href="/software/libextractor/">English</a>&nbsp;[en]</span>
+</p>
+</div>
+<!-- end /server/gnun/initial-translations-list.html -->
+
+
+<!-- end of server/body-include-1.html -->
+
+<!-- start of server/body-include-2 -->
+<div id="header">
+
+<div id="gnu-banner">
+ <a href="/">
+ <img src="/server/staging/fundraiser/heckert_gnu.transp-white.small.png"
+      alt=" [A GNU head] " /><strong>GNU</strong> Operating System</a>
+</div><!-- /gnu-banner -->
+
+<div id="fundraiser">
+<p class="message">
+With your help, we'll launch free software to new frontiers! Fuel the mission by
+becoming one of <b>400</b> new Associate Members by <b>January 1st</b> for
+<b>$10 per month</b> ($5 per month for students). <b><a
+href="https://fsf.org/appeal?pk_campaign=fall18&amp;pk_kwd=banner">Read more</a></b>.</p>
+
+<div class="progress">
+<div class="progress-bar">
+<span class="percentage"><span class="gnun-split"></span>91</span>
+</div>
+<div class="goal-div">
+<span class="goal">400</span>
+</div>
+</div>
+</div><!-- /fundraiser -->
+
+<p class="contribute">
+<a class="join"
+   href="https://my.fsf.org/join?pk_campaign=fall18&amp;pk_kwd=ban">
+Join</a>
+</p>
+</div><!-- /header -->
+
+<div id="navigation">
+ <ul>
+
+
+
+   <li id="tabAboutGNU"><a href="/gnu/gnu.html">ABOUT&nbsp;GNU</a></li>
+
+
+  <li id="tabPhilosophy"><a href="/philosophy/philosophy.html">PHILOSOPHY</a></li>
+
+
+  <li id="tabLicenses"><a href="/licenses/licenses.html">LICENSES</a></li>
+
+
+  <li id="tabEducation"><a href="/education/education.html">EDUCATION</a></li>
+
+
+  <li id="tabSoftware" class="active">
+     <span class='no-display'>=</span> 
+    <a href="/software/software.html">SOFTWARE</a>
+    <span class="gnun-split"></span>
+     <span class='no-display'>=</span> 
+  </li>
+
+
+  <li id="tabDoc"><a href="/doc/doc.html">DOCUMENTATION</a></li>
+
+
+  <li id="tabHelp"><a href="/help/help.html">HELP&nbsp;GNU</a></li>
+
+ </ul>
+</div><!--  /navigation -->
+<!-- end of server/body-include-2 -->
+
+<div id="content">
+<!-- end of server/banner.html -->
+
+<h2>GNU Libextractor</h2>
+<hr />
+<img src="extractor_logo.png" alt="libextractor" class="imgright" />
+
+<p>
+GNU Libextractor is a library used to extract meta data from files.
+The goal is to provide developers of file-sharing networks, browsers
+or WWW-indexing bots with a universal library to obtain simple
+keywords and meta data to match against queries and to show to users
+instead of only relying on filenames.  libextractor contains the shell
+command <tt>extract</tt> that, similar to the well-known <tt>file</tt>
+command, can extract meta data from a file and print the results to
+stdout.
+</p>
+<p>
+Currently, libextractor supports the following formats:
+HTML, MAN,
+PS, DVI,
+OLE2 (DOC, XLS, PPT), OpenOffice (sxw), StarOffice (sdw),
+FLAC, MP3 (ID3v1 and ID3v2), OGG, WAV,
+S3M (Scream Tracker 3), XM (eXtended Module), IT (Impulse Tracker), NSF(E) (NES music), SID (C64 music),
+EXIV2, JPEG, GIF, PNG, TIFF,
+DEB, RPM,
+TAR(.GZ), LZH, LHA, RAR, ZIP, CAB, 7-ZIP, AR, MTREE, PAX, CPIO, ISO9660, SHAR, RAW, XAR
+FLV, REAL, RIFF (AVI), MPEG, QT and ASF.
+Also, various additional MIME types are detected.
+</p>
+<p>
+GNU libextractor uses helper-libraries (plugins) to perform the actual
+extraction.  As a result, GNU libextractor can be extended simply by
+installing additional plugins.  Writing robust parsers can be difficult.
+GNU libextractor protects the main applications from haning or crashing
+plugins by executing all plugins out-of-process.
+</p>
+<p>
+GNU libextractor is a <a href="http://www.gnu.org/">GNU</a> package.
+Our official GNU website can be found
+at <a href="http://www.gnu.org/software/libextractor/">http://www.gnu.org/software/libextractor/</a>.
+</p>
+
+<h3 id="download">Downloading
+  Libextractor</h3>
+
+<dl>
+<dt>Source Code</dt>
+<dd>Libextractor
+can be found on the main GNU ftp server:
+<a href="http://ftp.gnu.org/gnu/libextractor/">http://ftp.gnu.org/gnu/libextractor/</a>
+(via HTTP) and
+<a href="ftp://ftp.gnu.org/gnu/libextractor/">ftp://ftp.gnu.org/gnu/libextractor/</a>
+(via FTP).  It can also be found
+on the <a href="/prep/ftp.html">GNU mirrors</a>;
+please
+<a href="http://ftpmirror.gnu.org/libextractor/">use
+a mirror</a> if possible.</dd>
+
+<dt>Debian .deb package</dt>
+<dd>
+The debian package can be downloaded from the <a href="http://packages.debian.org/">official debian archive</a>.
+The extract package can be found under Utilities and the library under Libraries.
+The respective packages for libextractor are <a href="http://packages.debian.org/extract">extract</a>, <a href="http://packages.debian.org/libextractor">libextractor</a> and for development <a href="http://packages.debian.org/libextractor-dev">libextractor-dev</a>.
+<a href="http://www.backports.org/">Backports</a> for Debian Stable are also available.
+</dd>
+
+<dt>Tar Package</dt>
+<dd>
+The latest version can be found on <a href="http://ftpmirror.gnu.org/libextractor/">GNU mirrors</a>.
+If the mirror does not work, you should be able to find them on the main FTP server at
+<a href="ftp://ftp.gnu.org/gnu/libextractor/">ftp://ftp.gnu.org/gnu/libextractor/</a>.
+<br />
+Latest release is <a href="http://ftpmirror.gnu.org/libextractor/libextractor-1.1.tar.gz">libextractor-1.1.tar.gz</a>.
+<br />
+Latest Java-binding is <a href="http://ftpmirror.gnu.org/libextractor/libextractor-java-1.0.0.tar.gz">libextractor-java-1.0.0.tar.gz</a>.
+<br />
+Latest Mono-binding is <a href="http://ftpmirror.gnu.org/libextractor/libextractor-mono-0.5.23.tar.gz">libextractor-mono-0.5.23.tar.gz</a>.
+<br />
+Latest Python-binding is <a href="http://ftpmirror.gnu.org/libextractor/libextractor-python-0.5.tar.gz">libextractor-python-0.5.tar.gz</a>.
+</dd>
+
+<dt>RPM Package</dt>
+<dd>
+RPMs for SuSE 9.3 can be found here (<a href="ftp://ftp.suse.com/pub/people/ke/9.3-i386/">i386</a>,
+<a href="ftp://ftp.suse.com/pub/people/ke/9.3-x86_64/">x86_64</a>,
+<a href="ftp://ftp.suse.com/pub/people/ke/SRPM/">SRPM</a>)
+</dd>
+
+<dt>Windows</dt>
+<dd>
+Latest Windows binary is <a href="http://ftpmirror.gnu.org/libextractor/libextractor-0.5.23-w32.zip">libextractor-0.5.23-w32.zip</a>.
+</dd>
+</dl>
+
+
+
+<h3 id="documentation">Documentation</h3>
+
+<p><a href="manual/">Documentation for
+Libextractor</a>
+is available online, as
+is <a href="/manual/">documentation for most GNU software</a>.  You may
+also find more information about
+Libextractor
+by running
+<em><a href="manual/extractor.html">info&nbsp;libextractor</a></em>
+or
+<em><a href="man3/libextractor.3.html">man&nbsp;libextractor</a></em>,
+or
+<em><a href="man1/extract.1.html">man&nbsp;extract</a></em>,
+or by looking at
+<em>/usr/share/doc/libextractor/</em>,
+<em>/usr/local/doc/libextractor/</em>,
+or similar directories on your system.  A brief summary is available by
+running <em>extract&nbsp;--help</em>.
+You might also be interested in an <a href="http://upstream-tracker.org/versions/libextractor.html">API compatibility report</a>
+comparing the various Libextractor versions.
+</p>
+<p>
+Articles related to libextractor:
+</p>
+<ul>
+<li><a href="http://www.linuxjournal.com/article/7552">Reading File Metadata with extract and libextractor</a></li>
+<li><a href="http://servers.linux.com/servers/06/08/21/1558230.shtml">How to recover lost files after you accidentally wipe your hard drive</a></li>
+<li><a href="http://www.gnucitizen.org/blog/all-your-metadata-are-belong-to-us">All your Metadata are belong to Us</a></li>
+</ul>
+
+
+<h3 id="mail">Mailing lists</h3>
+
+<p>Libextractor
+has the following mailing lists:</p>
+
+<ul>
+<li><a href="https://lists.gnu.org/mailman/listinfo/bug-libextractor">bug-libextractor</a>
+is used to discuss most aspects of
+Libextractor,
+including development and enhancement requests, as well as bug reports.</li>
+<li><a
+href="https://lists.gnu.org/mailman/listinfo/help-libextractor">help-libextractor</a> is
+for general user help and discussion.</li>
+</ul>
+
+<p>Announcements about
+Libextractor
+and most other GNU software are made on
+<a href="http://lists.gnu.org/mailman/listinfo/info-gnu">info-gnu</a>
+(<a href="http://lists.gnu.org/archive/html/info-gnu/">archive</a>).
+If you only want to get notifications about Libextractor, we
+suggest you subscribe to the project at
+<a href="http://freshmeat.net/projects/libextractor/">freshmeat</a>.
+</p>
+
+<p>
+Security reports that should not be made immediately public can be
+sent directly to <a href="http://grothoff.org/christian/">the maintainer</a>.
+If there is no response to an urgent
+issue, you can escalate to the general
+<a href="http://lists.gnu.org/mailman/listinfo/security">security</a>
+mailing list for advice.</p>
+
+<h3 id="contribute">Getting involved</h3>
+
+<p>Development of
+Libextractor,
+and GNU in general, is a volunteer effort, and you can contribute.  For
+information, please read <a href="/help/">How to help GNU</a>.  If you'd
+like to get involved, it's a good idea to join the discussion mailing
+list (see above).</p>
+
+<dl>
+
+<dt>Development</dt>
+
+<dd>Known bugs and open feature requests are tracked in
+    <a href="https://gnunet.org/bugs/">our bugtracker</a>.</dd>
+
+<dt>Subversion access</dt>
+<dd>
+<ul><li><p>
+You can access the current development version of libextractor using
+</p>
+<pre class="emph-box">$ svn checkout https://gnunet.org/svn/Extractor</pre>
+</li>
+<li><p>
+A Java binding for libextractor is in
+</p>
+<pre class="emph-box">$ svn checkout https://gnunet.org/svn/Extractor-java</pre>
+</li>
+<li><p>
+A Mono binding for libextractor is in
+</p>
+<pre class="emph-box">$ svn checkout https://gnunet.org/svn/Extractor-mono</pre>
+</li>
+<li><p>
+A Python binding can be found under
+</p>
+<pre class="emph-box">$ svn checkout https://gnunet.org/svn/Extractor-python</pre>
+<p>
+A source package is <a href="http://ftpmirror.gnu.org/libextractor/libextractor-python-0.5.tar.gz">here</a>.
+This binding has been packaged as a python egg, available <a href="http://cheeseshop.python.org/pypi/Extractor">here</a>.
+A second Python binding that includes a binding for doodle can be found <a href="http://grothoff.org/christian/doodle/download/nokos_extractor_doodle_python.zip">here</a>.
+</p></li>
+<li><p>
+A Perl binding is in <a href="http://search.cpan.org/~flora/File-Extractor/">CPAN</a>.
+The latest version of the Perl binding is available using
+</p>
+<pre class="emph-box">$ git clone git://git.perldition.org/File-Extractor.git/</pre>
+</li>
+<li><p>
+A Ruby binding has been published <a href="http://raa.ruby-lang.org/project/extractor/">here</a> (<a href="http://gnunet.org/libextractor/download/libextractor-ruby-0.9.tar.gz">mirror</a>).
+Another Ruby binding has been published <a href="http://extractor.rubyforge.org/">here</a> (<a href="http://ftpmirror.gnu.org/libextractor/libextractor-ruby-0.1.gem">mirror</a>).
+</p></li>
+<li><p>
+An initial draft of a PHP binding can be found under
+</p>
+<pre class="emph-box">$ svn checkout https://gnunet.org/svn/Extractor-php</pre>
+</li></ul>
+</dd>
+
+
+<dt>Translating
+  Libextractor</dt>
+
+<dd>To translate
+Libextractor's
+messages into other languages, please see the <a
+href="http://translationproject.org/domain/libextractor.html">Translation Project
+page for
+Libextractor</a>.
+If you have a new translation of the message strings,
+or updates to the existing strings, please have the changes made in this
+repository.  Only translations from this site will be incorporated into
+Libextractor.
+For more information, see the <a
+href="http://translationproject.org/html/welcome.html">Translation
+Project</a>.</dd>
+
+
+<dt>Maintainer</dt>
+
+<dd>Libextractor
+is currently being maintained by <a href="http://grothoff.org/christian/">Christian Grothoff</a>.</dd>
+
+</dl>
+
+
+<h3 id="quickintro">Quick Introduction</h3>
+
+<dl>
+<dt>Installation</dt>
+<dd>
+<p>
+The simplest way to install GNU libextractor is to use one of the binary
+packages which are available online for many distributions.  Note that
+under Debian, the extract tool is in a separate
+package <tt>extract</tt> and headers required to compile other
+applications against libextractor are in <tt>libextractor-dev</tt>.
+Thus, under Debian, you should use:
+</p>
+<pre class="emph-box">
+# apt-get install libextractor-dev extract
+</pre>
+<p>
+Compiling by hand follows the usual sequence:
+</p>
+<pre class="emph-box">
+$ tar xzvf libextractor.x.y.z.tar.gz
+$ cd libextractor.x.y.z
+$ ./configure
+$ make
+# make install
+</pre>
+<p>
+Note that you need various dependencies (read <tt>README</tt>
+for an up-to-date list) in order to compile all of the plugins.
+</p>
+</dd>
+<dt>Using the extract tool</dt>
+<dd>
+<p>
+After installing GNU libextractor, the extract tool can be used to obtain
+meta data from documents.  By default, the extract tool uses the
+canonical set of plugins, which consists of all format-specific
+plugins supported by the current version of libextractor together with
+the mime-type detection plugin.  If you are a user
+of <a href="http://www.ecst.csuchico.edu/~jacobsd/bib/formats/bibtex.html">BibTeX</a>
+the option <tt>-b</tt> is likely to come in handy to automatically
+create bibtex entries from documents that have been properly equipped
+with meta-data (if available).
+</p>
+<p>
+Further options are described in the extract manpage (<tt>man&nbsp;1&nbsp;extract</tt>).
+</p>
+</dd>
+<dt>Example Output</dt>
+<dd>
+<pre class="emph-box">
+$ extract libextractor-0.1.3-1.src.rpm
+Keywords for file libextractor-0.1.3-1.src.rpm:
+os - linux
+resource-identifier - http://ovmj.org/libextractor/
+group -System Environment/Libraries
+license - LGPL
+copyright - LGPL
+size - 251545
+build-host - wedge.cs.purdue.edu
+creation date - Wed Dec 25 07:50:07 2002
+description - libextractor is a simple library...
+summary - keyword extraction library
+release - 1
+version - 0.1.3
+title - libextractor
+unknown - SOURCE RPM 3.0
+mimetype - application/x-rpm
+</pre>
+<pre class="emph-box">
+$ extract extractor_logo.png
+Keywords for file extractor_logo.png:
+image dimensions - 272x188
+thumbnail - (binary, 5932 bytes)
+image dimensions - 272x188
+thumbnail - (binary, 6427 bytes)
+image dimensions - 272x188
+thumbnail - (binary, 6427 bytes)
+mimetype - image/png
+mimetype - image/png
+image dimensions - 272x188
+keywords - The libextractor logo
+</pre>
+</dd>
+<dt>Using the GNU libextractor library in your programs</dt>
+<dd>
+<p>
+The following listing shows the code of a minimalistic program that
+uses GNU libextractor.  Compiling the fragment requires passing the
+option <tt>-lextractor</tt> to gcc.  For details and additional
+functions for loading plugins and manipulating the keyword list, see
+the libextractor manpage (<tt>man&nbsp;3&nbsp;libextractor</tt>).
+Java programmers should note that a Java class that uses JNI to
+communicate with libextractor is also available.  Python programmers
+will find that libextractor (since 0.5.0) can also be used from
+Python, just <tt>import Extractor</tt>.
+</p>
+<pre class="emph-box">
+#include &lt;extractor.h&gt;
+
+int
+main (int argc, char * argv[])
+{
+  struct EXTRACTOR_PluginList *plugins
+    = EXTRACTOR_plugin_add_defaults (EXTRACTOR_OPTION_DEFAULT_POLICY);
+  EXTRACTOR_extract (plugins, argv[1],
+                     NULL, 0,
+                     &amp;EXTRACTOR_meta_data_print, stdout);
+  EXTRACTOR_plugin_remove_all (plugins);
+  return 0;
+}
+</pre>
+</dd>
+<dt>Writing new Plugins for GNU libextractor</dt>
+<dd>
+<p>
+The most complicated thing when writing a new plugin for GNU
+libextractor is the writing of the actual parser for a specific
+format.  Nevertheless, the basic pattern is always the same.  The
+plugin library must be called <tt>libextractor_XXX.so</tt> where XXX
+denotes the file format supported by the plugin and must be placed in
+the plugin directory (typically <tt>$PREFIX/lib/libextractor/</tt>).
+The library must export a method <tt>EXTRACTOR_XXX_extract_method</tt>
+with the following signature:
+</p>
+<pre class="emph-box">
+void
+EXTRACTOR_XXX_extract_method (struct EXTRACTOR_ExtractContext *ec);
+</pre>
+<p>
+<tt>ec</tt> provides a callback to invoke with meta data as well as
+functions for reading data from the file that is being processed.
+Most plugins start by reading the first bytes of the file and checking that
+that the header of data matches the specific format.
+The <tt>extract</tt> function is expected to call <tt>ec-&gt;proc</tt> with each
+meta data item found.  <tt>ec-&gt;cls</tt> must be passed as the first
+argument to <tt>proc</tt> and other function invoked from within <tt>ec</tt>.
+Finally, <tt>ec-&gt;config</tt> is an arbitrary string of options that the plugin is
+free to interpret. Most plugins ignore <tt>config</tt>.
+</p>
+<p>
+If the meta data extracted is a string, it is supposed to be converted
+into the UTF-8 character set by the plugin.  However, in cases where
+the character encoding used in the document is unknown, no conversion
+should be done.  Binary meta data can also be extracted.  Plugins
+indicate the format of the meta data using the <tt>format</tt>
+argument to <tt>proc</tt>.  Supported formats are UTF-8 strings, C
+strings (for strings of unknown encoding) and binary data.  In
+addition to this rough categorization, the plugin is also supposed to
+indicate the mime type of the meta data.  For strings, that mime type
+is most often <tt>text/plain</tt>.  Finally, the plugin must specify
+the meta data type.  Common meta data types are &quot;author&quot;,
+&quot;title&quot; and &quot;mime-type&quot;.  The full signature of
+the &quot;proc&quot; callback is:
+</p>
+<pre class="emph-box">
+typedef int (*EXTRACTOR_MetaDataProcessor)(void *cls,
+                                           const char *plugin_name,
+                                           enum EXTRACTOR_MetaType type,
+                                           enum EXTRACTOR_MetaFormat format,
+                                           const char *data_mime_type,
+                                           const char *data,
+                                           size_t data_len);
+</pre>
+<p>
+If &quot;proc&quot; returns non-zero, the plugin should abort
+processing the current file and return.
+</p>
+</dd>
+
+<dt>Related projects and useful resources</dt>
+<dd>
+<ul>
+<li><a href="http://www.wotsit.org/">File format database</a></li>
+<li><a href="http://getid3.sf.net/">getid3, similar project for PHP</a></li>
+<li><a href="http://blog.thinkphp.de/archives/12-My-first-PHP-Extension..html">PHP wrapper for libextractor</a></li>
+<li><a href="http://dublincore.org/documents/dcmi-terms/">Meta-data categorization standard</a></li>
+<li><a href="http://hul.harvard.edu/jhove/">JHOVE, Harvard Object Validation Environment</a></li>
+<li><a href="http://hachoir.org/">Hachoir binary file parser</a></li>
+<li><a href="http://meta-extractor.sourceforge.net/">Metadata Extraction Tool developed by the National Libary of New Zealand</a></li>
+</ul>
+</dd>
+<dt>Projects that use libextractor</dt>
+<dd>
+<ul>
+<li><a href="http://launchpad.net/basenji">Basenji, Portable volume indexer</a></li>
+<li><a href="http://grothoff.org/christian/doodle/">doodle, index your disk</a></li>
+<li><a href="http://evidence.sf.net/">Evidence, enlightened file manager</a></li>
+<li><a href="http://www.libferris.com/">libferris, a virtual file system</a></li>
+<li><a href="http://fossology.org/">FOSSology</a></li>
+<li><a href="http://gnunet.org/">GNUnet, secure P2P file sharing</a></li>
+<li><a href="http://lobotomy-project.org/">Lobotomy, experimental desktop environment</a></li>
+<li><a href="http://mediatomb.cc/">MediaTomb, UPnP AV Mediaserver</a></li>
+<li><a href="http://www.edge-security.com/metagoofil.php">Metagoofil, Metadata analyzer for information gathering</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<h3 id="license">Licensing</h3>
+
+<p>Libextractor
+is free software; you can redistribute it and/or modify it under the
+terms of the <a href="http://www.gnu.org/licenses/gpl.html"
+rel="license">GNU General Public License</a> as published by the Free
+Software Foundation; either version&nbsp;3 of the License, or (at your
+option) any later version.</p>
+
+
+</div><!-- for id="content", starts in the include above -->
+
+              <!-- begin server/footer-text.html -->
+<p id="backtotop"><a href="#header">BACK TO TOP</a></p>
+
+<hr class="no-display" />
+<div id="fsf-links">
+ <ul>
+  <li><a href="//www.fsf.org/">FSF</a></li>
+  <li><a href="//directory.fsf.org">FREE&nbsp;SOFTWARE&nbsp;DIRECTORY</a></li>
+  <li><a href="https://h-node.org/">HARDWARE</a></li>
+  <li><a href="/graphics/graphics.html">GNU&nbsp;ART</a></li>
+  <li><a href="/people/people.html">GNU'S&nbsp;WHO?</a></li>
+  <li><a href="/server/sitemap.html">SITE&nbsp;MAP</a></li>
+ </ul>
+</div><!-- /fsf-links -->
+
+<div id="mission-statement">
+
+<blockquote>
+<p style="direction:ltr; text-align:left"><a href="//www.fsf.org"><img id="fsfbanner"
+src="/graphics/fsf-logo-notext-small.png" alt=" [FSF logo] "/></a><strong>
+&ldquo;The Free Software Foundation (FSF) is a nonprofit with a worldwide
+mission to promote computer user freedom. We defend the rights of all
+software users.&rdquo;</strong></p>
+</blockquote>
+
+<p style="direction:ltr; text-align:left">
+The <a href="//www.fsf.org">Free Software Foundation</a> is
+the principal organizational sponsor of the GNU Operating System.
+<strong>Support GNU and the FSF</strong> by <a
+href="//shop.fsf.org/">buying manuals and gear</a>, <a
+href="https://my.fsf.org/associate/support_freedom?referrer=4052">
+<strong>joining the FSF</strong></a> as an associate member, or <a
+href="//donate.fsf.org/"><strong>making a donation</strong></a>.</p>
+
+</div><!-- /mission-statement -->
+<!-- end server/footer-text.html -->
+
+
+<div id="footer">
+<div class="unprintable">
+
+<p>Please send general FSF &amp; GNU inquiries to
+<a href="mailto:gnu@gnu.org">&lt;gnu@gnu.org&gt;</a>.
+There are also <a href="/contact/">other ways to contact</a>
+the FSF.  Broken links and other corrections or suggestions can be sent
+to <a href="mailto:bug-libextractor@gnu.org">&lt;bug-libextractor@gnu.org&gt;</a>.</p>
+
+<p>Please see the <a
+href="/server/standards/README.translations.html">Translations
+README</a> for information on coordinating and submitting translations
+of this article.</p>
+</div>
+
+<!-- Regarding copyright, in general, standalone pages (as opposed to
+     files generated as part of manuals) on the GNU web server should
+     be under CC BY-ND 4.0.  Please do NOT change or remove this
+     without talking with the webmasters or licensing team first.
+     Please make sure the copyright date is consistent with the
+     document.  For web pages, it is ok to list just the latest year the
+     document was modified, or published.
+
+     If you wish to list earlier years, that is ok too.
+     Either "2001, 2002, 2003" or "2001-2003" are ok for specifying
+     years, as long as each year in the range is in fact a copyrightable
+     year, i.e., a year in which the document was published (including
+     being publicly visible on the web or in a revision control system).
+
+     There is more detail about copyright years in the GNU Maintainers
+     Information document, www.gnu.org/prep/maintain. -->
+<p>Copyright &copy; 2012 Free Software Foundation, Inc.</p>
+
+<p>This page is licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-nd/4.0/">Creative
+Commons Attribution-NoDerivatives 4.0 International License</a>.</p>
+
+<!-- start of server/bottom-notes.html -->
+<div id="bottom-notes" class="unprintable">
+<p><a href="//www.fsf.org/about/dmca-notice">Copyright Infringement Notification</a></p>
+<div id="generic">
+
+
+</div>
+</div>
+<!-- end of server/bottom-notes.html -->
+
+
+<p class="unprintable">Updated:
+ <!-- timestamp start -->
+$Date: 2016/05/08 08:28:59 $
+<!-- timestamp end -->
+</p>
+</div>
+</div>
+</body>
+</html>
